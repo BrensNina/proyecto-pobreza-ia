@@ -1,0 +1,27 @@
+flowchart LR
+    analista["«actor»<br/><b>Analista de<br/>focalización</b>"]
+    investigador["«actor»<br/><b>Investigador(a) o<br/>desarrollador(a)</b>"]
+
+    subgraph sistema["Sistema de apoyo a la focalización"]
+        cu3(["CU3 · Cargar un<br/>hogar real"])
+        cu1(["CU1 · Evaluar<br/>un hogar"])
+        cu2(["CU2 · Consultar<br/>la explicación"])
+        cu5(["CU5 · Descargar la<br/>lista priorizada"])
+        cu4(["CU4 · Evaluar una<br/>lista de hogares"])
+        cu6(["CU6 · Consultar el<br/>desempeño del modelo"])
+        cu7(["CU7 · Descargar la<br/>ENAHO del INEI"])
+        cu8(["CU8 · Entrenar y<br/>evaluar modelos"])
+        cu9(["CU9 · Ejecutar<br/>las pruebas"])
+    end
+
+    analista --- cu1
+    analista --- cu4
+    analista --- cu6
+    cu3 -. "«extend»" .-> cu1
+    cu1 -. "«include»" .-> cu2
+    cu5 -. "«extend»" .-> cu4
+
+    cu6 ~~~ cu7
+    cu7 --- investigador
+    cu8 --- investigador
+    cu9 --- investigador

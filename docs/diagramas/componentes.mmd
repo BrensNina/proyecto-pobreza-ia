@@ -1,0 +1,33 @@
+flowchart TB
+    analista["«actor»<br/><b>Analista de focalización</b>"]
+
+    subgraph online["Uso del modelo · en línea"]
+        app["<b>Interfaz</b><br/>app.py (Streamlit)"]
+        expl["<b>Explicación</b><br/>interpretacion.py"]
+        pred["<b>Predicción</b><br/>prediccion.py"]
+    end
+
+    subgraph compartido["Componentes compartidos"]
+        feat["<b>Variables del hogar</b><br/>construir.py"]
+        final[("<b>Modelo final</b><br/>modelo_final.joblib")]
+    end
+
+    subgraph offline["Construcción del modelo · fuera de línea"]
+        nb["<b>Cuadernos 01 a 05</b><br/>proceso CRISP-DM"]
+        lib["<b>Módulos de src/</b><br/>adquisición, preparación,<br/>modelos y métricas"]
+    end
+
+    inei[("<b>Portal de microdatos<br/>del INEI</b>")]
+    tests["<b>Pruebas automatizadas</b><br/>pytest"]
+
+    analista --> app
+    app --> expl
+    app --> pred
+    expl --> feat
+    pred --> feat
+    pred -- "carga" --> final
+    nb -- "entrena y guarda" --> final
+    nb --> lib
+    lib --> inei
+    tests -. "verifica" .-> online
+    tests -. "verifica" .-> offline

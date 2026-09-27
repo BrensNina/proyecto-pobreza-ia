@@ -1,0 +1,18 @@
+flowchart TB
+    subgraph fila1[" "]
+        direction LR
+        p1["<b>1 · Comprensión<br/>del problema</b><br/>DSR: problema y objetivos<br/><i>secciones 5 a 9 y 14</i>"]
+        p2["<b>2 · Comprensión<br/>de los datos</b><br/>procedencia, calidad y EDA<br/><i>cuadernos 01 y 02</i>"]
+        p3["<b>3 · Preparación<br/>de los datos</b><br/>DSR: diseño y desarrollo<br/><i>cuaderno 03</i>"]
+        p1 --> p2 --> p3
+    end
+
+    subgraph fila2[" "]
+        direction LR
+        p4["<b>4 · Modelado</b><br/>DSR: diseño y desarrollo<br/><i>cuaderno 04</i>"]
+        p5["<b>5 · Evaluación</b><br/>DSR: evaluación rigurosa;<br/>si no se cumplen los<br/>criterios, vuelve a la fase 3<br/><i>cuaderno 05 y pruebas</i>"]
+        p6["<b>6 · Despliegue</b><br/>DSR: demostración<br/>y comunicación<br/><i>prototipo, README y paper</i>"]
+        p4 --> p5 --> p6
+    end
+
+    fila1 --> fila2

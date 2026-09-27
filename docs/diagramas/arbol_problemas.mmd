@@ -1,0 +1,20 @@
+flowchart BT
+    c1["<b>C1 · Gasto costoso</b><br/>la pobreza oficial se<br/>mide con el gasto, que<br/>exige una encuesta<br/>extensa por hogar"]
+    c2["<b>C2 · Reglas simples</b><br/>la ruralidad no capta<br/>la pobreza urbana:<br/>el 74,1 % de los pobres<br/>vive en ciudades"]
+    c3["<b>C3 · Costo de vida</b><br/>la línea de pobreza<br/>extrema va de S/ 210<br/>(Selva rural) a S/ 307<br/>(Lima Metropolitana)"]
+    c4["<b>C4 · Por demanda</b><br/>el SISFOH prioriza<br/>evitar la filtración<br/>y acepta errores<br/>de exclusión"]
+
+    p["<b>PROBLEMA CENTRAL</b><br/>Errores en la identificación de los hogares<br/>pobres que deben priorizar los programas sociales"]
+
+    e1["<b>E1 · Exclusión</b><br/>solo el 18,1 % de los<br/>hogares pobres<br/>recibe Juntos"]
+    e2["<b>E2 · Filtración</b><br/>el 59,3 % de los hogares<br/>que reciben Juntos<br/>no es pobre"]
+    e3["<b>E3 · Menor impacto del gasto social</b><br/>8,8 millones de personas pobres<br/>(25,7 %) en 2025"]
+
+    c1 --> p
+    c2 --> p
+    c3 --> p
+    c4 --> p
+    p --> e1
+    p --> e2
+    e1 --> e3
+    e2 --> e3

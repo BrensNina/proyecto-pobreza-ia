@@ -1,0 +1,26 @@
+flowchart TB
+    subgraph datos["1 · Datos"]
+        direction LR
+        A["<b>Fuente de datos</b><br/>ENAHO 2024 y 2025<br/>(INEI), 6 módulos"]
+        B["<b>Adquisición</b><br/>descarga y lectura<br/><code>src/data</code>"]
+        C["<b>Feature engineering</b><br/>1 fila por hogar,<br/>36 variables<br/><code>src/features</code>"]
+        A --> B --> C
+    end
+
+    subgraph modelo["2 · Modelo"]
+        direction LR
+        D["<b>Preprocesamiento</b><br/>imputación, escala<br/>y One-Hot (Pipeline)<br/><code>src/preprocessing</code>"]
+        E["<b>Modelo de IA</b><br/>regresión logística<br/>balanceada<br/><code>models/</code>"]
+        F["<b>Predicción</b><br/>probabilidad, decisión<br/>y aportes<br/><code>src/models</code>"]
+        D --> E --> F
+    end
+
+    subgraph uso["3 · Evaluación y uso"]
+        direction LR
+        G["<b>Evaluación</b><br/>métricas, validación<br/>y equidad<br/><code>src/evaluation</code>"]
+        H["<b>Interfaz</b><br/>prototipo web<br/>en Streamlit<br/><code>app/app.py</code>"]
+        I["<b>Usuario</b><br/>analista de<br/>focalización"]
+        G --> H --> I
+    end
+
+    datos --> modelo --> uso

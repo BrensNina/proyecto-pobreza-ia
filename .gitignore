@@ -1,0 +1,21 @@
+# Datos originales del INEI: pesan más de 300 MB y se descargan con src/data/descargar.py
+data/raw/
+
+# Archivos temporales de Python y Jupyter
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.pytest_cache/
+
+# Archivos del sistema operativo
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Modelos pesados: se regeneran ejecutando notebooks/04_modeling.ipynb
+models/e4_knn.joblib
+models/e5_random_forest.joblib
+
+# Versiones intermedias de los diagramas (se versionan las fuentes .mmd y los PNG)
+docs/diagramas/*.svg
+docs/diagramas/*.pdf

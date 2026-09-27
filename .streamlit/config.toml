@@ -1,0 +1,13 @@
+# Configuración del prototipo (se lee al ejecutar "streamlit run app/app.py" desde la raíz)
+
+[browser]
+# No enviar estadísticas de uso a Streamlit
+gatherUsageStats = false
+
+[theme]
+# Azul de la paleta del proyecto
+primaryColor = "#2a78d6"
+
+[client]
+# Ocultar las opciones de desarrollador (botón "Deploy")
+toolbarMode = "viewer"

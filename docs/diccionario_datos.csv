@@ -1,0 +1,44 @@
+﻿variable,tipo,origen_enaho,descripcion
+CONGLOME,Identificación (no entra al modelo),Todas,Número de conglomerado (parte de la llave del hogar)
+VIVIENDA,Identificación (no entra al modelo),Todas,Número de vivienda (parte de la llave del hogar)
+HOGAR,Identificación (no entra al modelo),Todas,Número de hogar (parte de la llave del hogar)
+ubigeo,Identificación (no entra al modelo),Sumaria,"Código de ubicación geográfica del INEI (departamento, provincia, distrito)"
+factor07,Identificación (no entra al modelo),Sumaria,Factor de expansión del hogar; solo para estimaciones poblacionales
+pobreza_inei,Identificación (no entra al modelo),Sumaria POBREZA,"Condición de pobreza oficial: 1 pobre extremo, 2 pobre no extremo, 3 no pobre"
+n_miembros,Numérica,Sumaria MIEPERHO,Número de miembros del hogar
+n_habitaciones,Numérica,Mód. 100 P104,"Habitaciones de la vivienda, sin contar baño, cocina ni pasadizos"
+personas_por_habitacion,Numérica,Derivada,n_miembros / n_habitaciones (hacinamiento)
+jefe_edad,Numérica,Mód. 200 P208A,Edad del jefe(a) del hogar en años
+n_menores_14,Numérica,Mód. 200 P208A,Miembros menores de 14 años
+n_mayores_65,Numérica,Mód. 200 P208A,Miembros de 65 años o más
+tasa_dependencia,Numérica,Derivada,(menores de 14 + mayores de 65) / miembros de 14 a 64 años
+educacion_jefe,Numérica,Mód. 300 P301A,"Nivel educativo del jefe(a), escala ordinal de 1 (sin nivel) a 11 (posgrado)"
+max_educacion_adultos,Numérica,Mód. 300 P301A,Máximo nivel educativo entre los miembros de 18 años o más
+n_equipos,Numérica,Mód. 612 P612,Número de artefactos y vehículos que posee el hogar
+tipo_vivienda,Categórica,Mód. 100 P101,Tipo de vivienda
+material_paredes,Categórica,Mód. 100 P102,Material predominante de las paredes exteriores
+material_piso,Categórica,Mód. 100 P103,Material predominante de los pisos
+material_techo,Categórica,Mód. 100 P103A,Material predominante de los techos
+tenencia_vivienda,Categórica,Mód. 100 P105A,Régimen de tenencia de la vivienda
+fuente_agua,Categórica,Mód. 100 P110,Procedencia principal del agua
+desague,Categórica,Mód. 100 P111A,Conexión del servicio higiénico
+combustible_cocina,Categórica,Mód. 100 P113A,Combustible usado con mayor frecuencia para cocinar
+dominio,Categórica,Sumaria DOMINIO,"Dominio geográfico de la ENAHO (costa, sierra, selva y Lima Metropolitana)"
+departamento,Categórica,Sumaria UBIGEO,Departamento (dos primeros dígitos del ubigeo)
+area_rural,Binaria (0/1),Sumaria ESTRATO,1 si el hogar está en área rural (estratos 6 a 8)
+jefe_mujer,Binaria (0/1),Mód. 200 P207,1 si el jefe del hogar es mujer
+tiene_electricidad,Binaria (0/1),Mód. 100 P1121,1 si el hogar tiene alumbrado eléctrico
+tiene_telefono_fijo,Binaria (0/1),Mód. 100 P1141,1 si el hogar tiene teléfono fijo
+tiene_celular,Binaria (0/1),Mód. 100 P1142,1 si el hogar tiene teléfono celular
+tiene_tv_cable,Binaria (0/1),Mód. 100 P1143,1 si el hogar tiene TV por cable o satelital
+tiene_internet,Binaria (0/1),Mód. 100 P1144,1 si el hogar tiene conexión a internet (fija o móvil)
+tiene_radio,Binaria (0/1),Mód. 612,1 si el hogar tiene radio
+tiene_tv_color,Binaria (0/1),Mód. 612,1 si el hogar tiene TV a color
+tiene_computadora,Binaria (0/1),Mód. 612,1 si el hogar tiene computadora o laptop
+tiene_cocina_gas,Binaria (0/1),Mód. 612,1 si el hogar tiene cocina a gas
+tiene_refrigeradora,Binaria (0/1),Mód. 612,1 si el hogar tiene refrigeradora o congeladora
+tiene_lavadora,Binaria (0/1),Mód. 612,1 si el hogar tiene lavadora de ropa
+tiene_microondas,Binaria (0/1),Mód. 612,1 si el hogar tiene horno microondas
+tiene_auto,Binaria (0/1),Mód. 612,1 si el hogar tiene auto o camioneta
+tiene_motocicleta,Binaria (0/1),Mód. 612,1 si el hogar tiene motocicleta
+pobre,Binaria (0/1),Sumaria POBREZA,"VARIABLE OBJETIVO: 1 si el hogar es pobre (POBREZA 1 o 2), 0 si no es pobre"

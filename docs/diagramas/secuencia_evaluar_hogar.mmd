@@ -1,0 +1,23 @@
+sequenceDiagram
+    actor A as Analista
+    participant UI as Interfaz<br/>(app.py)
+    participant P as prediccion.py
+    participant M as Pipeline del<br/>modelo final
+    participant I as interpretacion.py
+
+    A->>UI: Registra el hogar
+    UI->>P: preparar_hogar<br/>(respuestas)
+    alt composición inconsistente
+        P-->>UI: error de validación
+        UI-->>A: Mensaje de error
+    else datos consistentes
+        P->>P: variables derivadas<br/>y códigos válidos
+        P-->>UI: hogar con 36 variables
+        UI->>P: predecir(modelo, hogar)
+        P->>M: predict_proba(hogar)
+        M-->>P: probabilidad
+        P-->>UI: probabilidad y decisión
+        UI->>I: explicar_hogar y<br/>resumir_por_grupo
+        I-->>UI: aportes por característica<br/>y por grupo
+        UI-->>A: Probabilidad, decisión<br/>y explicación
+    end

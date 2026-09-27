@@ -1,0 +1,20 @@
+flowchart TB
+    d25[("ENAHO 2025<br/>33 702 hogares<br/>18,1 % pobres")]
+    d24[("ENAHO 2024<br/>33 691 hogares")]
+
+    d25 --> div["División estratificada<br/>80/20 · semilla 42"]
+    div --> ent["Entrenamiento<br/>26 961 hogares"]
+    div --> pru["Prueba<br/>6 741 hogares<br/><i>reservada</i>"]
+
+    ent --> cv["Validación cruzada<br/>de 5 particiones<br/>GridSearchCV · métrica F1<br/>mismo Pipeline para todos"]
+    cv --> exp["E0 regla «rural = pobre»<br/>E1 regresión logística por defecto<br/>E2 regresión logística ajustada<br/>E3 árbol de decisión · E4 KNN<br/>E5 Random Forest"]
+    exp --> sel["Selección con una regla<br/>fijada antes de los experimentos:<br/>mayor F1 y, ante un empate,<br/>el modelo más interpretable"]
+    sel --> fin["Modelo final:<br/>regresión logística<br/>balanceada (E2)"]
+    pru --> eva["Evaluación final (una sola vez)<br/>métricas · matriz de confusión<br/>ROC · umbral · interpretabilidad<br/>sesgo · artefacto"]
+    fin --> eva
+
+    d25 --> panel["Se excluyen los 9 842<br/>hogares del panel<br/>(entrevistados en 2024)"]
+    panel --> nuevos["23 860 hogares<br/>nuevos de 2025"]
+    d24 --> e6["E6 · Validación temporal<br/>entrenar con 2024"]
+    e6 --> evt["Evaluar en los hogares<br/>nuevos de 2025"]
+    nuevos --> evt

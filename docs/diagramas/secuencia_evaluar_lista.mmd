@@ -1,0 +1,23 @@
+sequenceDiagram
+    actor A as Analista
+    participant UI as Interfaz<br/>(app.py)
+    participant P as prediccion.py
+    participant M as Pipeline del<br/>modelo final
+
+    A->>UI: Sube un CSV o elige<br/>la muestra de la ENAHO
+    UI->>P: validar_hogares(tabla)
+    alt faltan columnas
+        P-->>UI: columnas faltantes
+        UI-->>A: Mensaje de error
+    else columnas completas
+        P-->>UI: tabla limpia
+        UI->>P: predecir(modelo, hogares)
+        P->>M: predict_proba(hogares)
+        M-->>P: probabilidades
+        P-->>UI: probabilidades y decisiones
+        UI-->>A: Lista ordenada<br/>por probabilidad
+        opt descarga
+            A->>UI: Descargar resultados
+            UI-->>A: hogares_priorizados.csv
+        end
+    end
